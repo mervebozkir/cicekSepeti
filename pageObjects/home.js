@@ -1,4 +1,5 @@
 import {expect} from "chai"
+import {config} from "../wdio.conf"
 
 class homePage{
     accountInfo(){
@@ -6,6 +7,11 @@ class homePage{
         info.waitForDisplayed()
         var accInfo = expect(info.getText()).contain('My Account')
         return accInfo;
+    }
+
+    turnToHomepage(){
+        browser.switchWindow(config.baseUrl)
+        console.log(browser.getUrl())        
     }
 }
 
