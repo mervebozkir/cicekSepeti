@@ -4,7 +4,7 @@ import {expect} from "chai"
 class facebookPage{
     page(){
         browser.switchWindow('https://www.facebook.com/login')
-        return expect(browser.getTitle()).contains("Facebook'a Giriş Yap")
+        return expect(browser.getUrl()).contains("https://www.facebook.com/login.php")
     }
 
     get mail(){
