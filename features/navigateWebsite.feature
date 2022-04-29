@@ -30,3 +30,33 @@ Examples:
     |   DE   | https://www.mizu.com/de-mx/login |
     |   VN   | https://www.mizu.com/vi-mx/login |
     |   ENG  | https://www.mizu.com/en-mx/login |
+
+@cartIcon
+Scenario: Cart icon controls
+    When The user clicks cart icon
+    Then The user see cart page
+    When The user clicks Continue Shopping button
+    Then The user see homepage
+
+@trackOrder
+Scenario: Checking that when the Track Order option is clicked, it is directed to the tracking page
+    When The user clicks Track Order item
+    Then The user see order page
+
+@searchBar
+Scenario: Search bar controls
+    When The user inputs "chocolates" on search bar
+    And The user clicks search button
+    Then The user see page title contains "chocolates"
+    And The user see "chocolates" related results in the page
+
+@signInWithGoogle
+Scenario: Controls for Sign In with Google flow
+    When The user clicks sign in with Google button
+    Then The user see Google account page
+    When The user inputs mail information
+    And The user clicks next button
+    # Then The user see next page
+    # When The user inputs password information
+    # And The user clicks next button on second page
+    # Then The user see that successfully logged in

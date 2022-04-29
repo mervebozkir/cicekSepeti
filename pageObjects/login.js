@@ -1,6 +1,7 @@
 import {expect} from "chai"
+import waitPage from "./waitUntil";
 
-class loginPage{
+class loginPage extends waitPage{
     goToLoginPage(){
         browser.maximizeWindow()
         return browser.url('/login');
@@ -59,7 +60,7 @@ class loginPage{
     resetConfirmation(){
         const info = $('div.membership__center > div.password-recovery-result > span')
         info.waitForDisplayed()
-        return expect(info.getText()).contains('You will receive an e-mail from us with instructions for resetting your password.');
+        expect(info.getText()).contains('You will receive an e-mail from us with instructions for resetting your password.');
     }
 
     get error(){
@@ -68,21 +69,17 @@ class loginPage{
     }
 
     errorMessage(errors){
-        this.error.waitForDisplayed()
-        expect(this.error.getText()).equals(errors)
-        driver.pause(10000)
+        super.waitUntilAction(this.error.getText(),errors)
     }
 
     errorMessageforPassword(errors){
         const error = $('#Password-error')
-        error.waitForDisplayed()
-        expect(error.getText()).equals(errors)
+        super.waitUntilAction(this.error.getText(),errors)
     }
 
     facebookButton(){
         const button = $('div.membership__bottom a.login__facebook')
-        button.waitForClickable()
-        return button.click()
+        button.click()
     }
 
     changeLanguage(language){
@@ -93,12 +90,11 @@ class loginPage{
     }
 
     checkPageAddress(pageAddress){
-        driver.pause(8000)
-        expect(browser.getUrl()).equals(pageAddress)
+        super.waitUntilAction(browser.getUrl(),pageAddress)
     }
 
     checkPasswordBox(type){
-        expect(this.password.getAttribute('type')).equals(type)
+        super.waitUntilAction(this.password.getAttribute('type'),type)
     }
 
     clickEyeIcon(){
@@ -121,6 +117,36 @@ class loginPage{
         for (var i = 0; i < 100; i++)
           firstValue += maxValue.charAt(Math.floor(Math.random() * maxValue.length));   
         return firstValue;
+    }
+
+    get bar(){
+        let bar = $('#product-search-0 > div.product-search__inner-container')
+        return bar;
+    }
+
+    inputSearch(keyword){
+        this.bar.$('input').setValue(keyword)
+    }
+
+    clickSearch(){
+        this.bar.$('button').click()
+    }
+
+    clickCart(){
+        let icon = $("a[href='/en-mx/cart']")
+        icon.click()
+    }
+
+    clickTrackOrder(){
+        let icon = $("a[href='/en-mx/track-order']")
+        icon.click()
+    }
+
+    googleButton(){
+        const button = $('a[href="/ExternalAuthGoogle/Authenticate?redirectUrl="]')
+        button.scrollIntoView()
+        button.waitForClickable()
+        button.click()
     }
 }
 

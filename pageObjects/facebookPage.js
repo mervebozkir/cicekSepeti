@@ -23,8 +23,7 @@ class facebookPage{
 
     signIn(){
         let button = $('#login_form #loginform #loginbutton')
-        button.waitForClickable()
-        return button.click()
+        button.click()
     }
 }
 
