@@ -74,7 +74,7 @@ class loginPage extends waitPage{
 
     errorMessageforPassword(errors){
         const error = $('#Password-error')
-        super.waitUntilAction(this.error.getText(),errors)
+        super.waitUntilAction(error.getText(),errors)
     }
 
     facebookButton(){
