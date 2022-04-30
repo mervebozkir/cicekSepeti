@@ -14,4 +14,5 @@ To run tests as synchronous add dependency "@wdio/sync" in package.json file and
 For all dependencies in package.json use **npm i** command.<br/>
 
 ## Test run
-If you want, you can clone the project to your local machine. In that way use **npm i** first (just for one time) and then use **npm run test** command on terminal. Or you can go to [actions tab](https://github.com/mervebozkir/cicekSepeti/actions) and see the results for previous runs.
+If you want, you can clone the project to your local machine. In that way use **npm i** first (just for one time) and then use **npm run test** command on terminal. 
+Or you can go to [actions tab](https://github.com/mervebozkir/cicekSepeti/actions) and use **re-run jobs** option in the last job.
